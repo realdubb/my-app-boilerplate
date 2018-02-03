@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Grid, Column } from '@extjs/ext-react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+export default class MyExample extends Component {
+
+    store = new Ext.data.Store({
+        data: [
+            { "name": "Lisa", "email": "lisa@simpsons.com", "phone": "555-111-1224" },
+            { "name": "Bart", "email": "bart@simpsons.com", "phone": "555-222-1234" },
+            { "name": "Homer", "email": "home@simpsons.com", "phone": "555-222-1244" },
+            { "name": "Marge", "email": "marge@simpsons.com", "phone": "555-222-1254" }
+        ]
+    });
+
+    render() {
+        return (
+            <Grid store={this.store}>
+                <Column text="Name" dataIndex="name" flex="1"/>
+                <Column text="Email" dataIndex="email" flex="1"/>
+                <Column text="Phone" dataIndex="phone" flex="1"/>
+            </Grid>
+        )
+    }
 }
-
-export default App;
